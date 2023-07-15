@@ -10,7 +10,6 @@
 - Cloudfront (for global content delivery)
 - AWS WAF (Web App Firewall)
 - RDS (Mysql for database)
-
 ---
 
 ## STEPS 
@@ -67,11 +66,22 @@
    ```
 5. Download and configure Wordpress
    ```bash
+   # change directory
    cd /var/www/html
+
+   # download wordpress
    sudo wget https://wordpress.org/latest.tar.gz
+
+   # Extract wordpress files
    sudo tar -xzf latest.tar.gz
+
+   # Move all files from wordpress to the current directory
    sudo mv wordpress/* .
+
+   # remove the wordpress directory and the latest.tar.gz file from the current directory
    sudo rm -rf wordpress latest.tar.gz
+
+   # the ownership of the /var/www/html directory and all its files and subdirectories will be changed to the apache user and apache group
    sudo chown -R apache:apache /var/www/html
 
    ```
@@ -91,6 +101,4 @@
    - In the settings, under the alternate domain name, type out the domain name I bought in Route 53
    - Under custom SSL certificate, select the SSL certificate you requested in ACM.
    - Enable AWF WAF in Cloudfront.
-  
-
 
